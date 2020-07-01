@@ -1,10 +1,14 @@
+import os
+import DIRECTORIES
 from flask import Flask, request, render_template
 
 app = Flask(__name__)
 
-_posts_dir_file_path = "/home/solanki/github/techcentaur.github.io/_posts/"
+@app.route('/')
+def home():
+    return render_template('main.html')
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/create', methods=['GET', 'POST'])
 def write_post():
     if request.method=="POST":
         values = request.form
@@ -12,6 +16,34 @@ def write_post():
         if ret:
             return render_template('options.html')
     return render_template('post.html')
+
+
+@app.route('/show/<value>', methods=['GET'])
+def show(value):
+    data = None
+
+    if str(value) == "drafts":
+        files = os.listdir(DIRECTORIES.DRAFTS_PATH)
+        data = [x[3] for x in sorted([tuple(file[:10].split("-") + [file]) for file in files])]
+
+    elif str(value) == "blog":
+        pass
+    elif str(value) == "journal":
+        pass
+    return render_template('show.html', data=data, value=value)
+
+@app.route('/show/<value>/<filename>')
+def view_post(value, filename):
+    data = None
+    if str(value) == "drafts":
+        with open(DIRECTORIES.DRAFTS_PATH + "/" + filename) as f:
+            data = f.read()
+        data = data.replace("/\n/g", "<br /><br />")
+    elif str(value) == "blog":
+        pass
+    elif str(value) == "journal":
+        pass
+    return render_template('viewpost.html', data=data)
 
 
 def create_post(values):
@@ -45,7 +77,7 @@ def create_post(values):
 
         data = "\n".join(header)
         fname = values['date'] + "-" + "-".join([x.lower() for x in values['title'].split()])  + ".md"
-        fname = _posts_dir_file_path + fname
+        fname = DIRECTORIES.POSTS_DIRECTORY + "/" + fname
         with open(fname, 'w') as f:
             f.write(data)
 
