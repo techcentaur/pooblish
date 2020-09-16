@@ -2,28 +2,24 @@
 <html>
 <head>
 	<title>View</title>
+	<style>
+		html{
+			font-family: 'Product Sans';
+		}
+	</style>
 </head>
-<style type="text/css">
-body{
-	margin-left: 30% !important;
-	margin-right: 30% !important;
-	font-family: 'Hermit' !important;
-}
-</style>
-
 <body>
-	<h1>Post Successful!</h1>
+	<h2>{{ name }} Successfully !</h2>
 	<ul>
 		<li>
-		<a href="/">Write a new post</a>
+		<a href="http://127.0.0.1:4000/">Go to blog</a>
 		</li>
 		<li>
-		<a href="/edit">Edit the post</a>
+		<a href="{{ edit_link }}">Edit the post</a>
 		</li>
 		<li>
-		<a href="">View post on the website</a>
+		<a href="/">Go to home page</a>
 		</li>
-		
 	</ul>
 </body>
 

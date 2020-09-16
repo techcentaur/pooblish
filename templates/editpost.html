@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Edit post</title>
+	<style>
+		html{
+			font-family: 'Product Sans' !important;
+		}
+	</style>
+</head>
+<body>
+	<h2>Edit post:</h2>
+	<h4>Post type: {{ value }}</h4>
+	<form method="post">
+		<textarea id="editarea" name="editarea"
+		style="margin: 0px; width: 950px; height: 650px; font-family: 'Product Sans' !important;">
+			{{ data }}
+		</textarea>
+		<hr>
+		<br>
+		<input type="submit" name="save">
+	</form>
+</body>
+</html>

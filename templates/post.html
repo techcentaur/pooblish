@@ -3,14 +3,11 @@
 <head>
 	<title>Post</title>
 </head>
-<style type="text/css">
-body{
-	font-family: 'Caecilia LT W04';
-}
-button, form, textarea, input{
-	font-family: 'Caecilia LT W04' !important;
-}
-</style>
+	<style>
+		html{
+			font-family: 'Product Sans' !important;
+		}
+	</style>
 <body>
 
 <h3>Create Post</h3>
@@ -19,19 +16,19 @@ button, form, textarea, input{
 		
 		<li>
 			<label for="date">Date: </label>
-			<input type="date" name="date" id="date">
+			<input size="50" type="date" name="date" id="date">
 		<br>
 		</li>
 
 		<li>
 			<label for="title">Title: </label>
-			<input type="text" name="title" id="title">
+			<input size="50" type="text" name="title" id="title">
 			<br>
 		</li>
 
 		<li>
 			<label for="tags">Tags: <span style="font-size: 12px">(`*` is separator)</span></label>
-			<input type="text" name="tags" id="tags">
+			<input size="50" type="text" name="tags" id="tags">
 			<br>
 		</li>
 
@@ -49,11 +46,10 @@ button, form, textarea, input{
 
 		<br>
 		<hr>
-		<textarea name="content" rows="10" cols="70"></textarea>
+		<textarea name="content" rows="10" cols="70" style="font-family: 'Product Sans' !important;"></textarea>
 		<hr>
 
 	</form>
 	<button type="submit" form="form1" value="post">Post</button>
-
 </body>
 </html>

@@ -2,9 +2,17 @@
 <html>
 <head>
 	<title>Solanki</title>
+	<style>
+		html{
+			font-family: 'Product Sans';
+		}
+	</style>
 </head>
 <body>
-	<h2>View Post</h2>
+	<h2>Post type: {{ value }}</h2>
+	<div>
+		<a href="/edit/{{ value }}/{{ filename }}">Edit this post</a>
+	</div>
 	<div style="white-space:pre-wrap;">
 		<p>
 			{{ data }}
