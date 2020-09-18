@@ -2,6 +2,7 @@ import os
 import DIRECTORIES
 from datetime import datetime
 from flask import Flask, request, render_template
+from titlecase import titlecase
 
 app = Flask(__name__)
 
@@ -86,8 +87,9 @@ def create_post(values):
 
     today = datetime.now()
     header.append("date: '{} {} {} {}:00:00 GMT+0530 (India Standard Time)'".format(month_dict[int(date[1])], date[2], date[0], today.hour))
-    header.append("title: '{}'".format(values['title']))
-        
+
+    header.append("title: '{}'".format(titlecase(values['title'])))
+
     if 'showcase' in values:
         header.append("showcase: true")
     else:
