@@ -11,13 +11,15 @@
 <body>
 	<h2>Post type: {{ value }}</h2>
 	<div>
-		<a href="/edit/{{ value }}/{{ filename }}">Edit this post</a>
-		<br>
-		{% if value == "drafts" %}
-			<a href="/migration/{{ value }}/{{ filename }}">Migrate Draft to Published Post</a>
-		{% else %}
-			<a href="/migration/{{ value }}/{{ filename }}">Migrate Post to Drafts</a>
-		{% endif %}
+		<ul>
+			<li><a href="/edit/{{ value }}/{{ filename }}">Edit this post</a></li>
+			{% if value == "drafts" %}
+				<li><a href="/migration/{{ value }}/{{ filename }}">Migrate draft to published post</a></li>
+			{% else %}
+				<li><a href="/migration/{{ value }}/{{ filename }}">Migrate post to drafts</a></li>
+			{% endif %}
+			<li><a href="/delete/{{ value }}/{{ filename }}">Delete this post</a></li>
+		</ul>
 	</div>
 	<div style="white-space:pre-wrap;">
 		<p>

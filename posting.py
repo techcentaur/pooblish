@@ -35,6 +35,22 @@ def migration(value, filename):
         subprocess.run(["mv", DIRECTORIES.POSTS_PATH + "/" + filename , DIRECTORIES.DRAFTS_PATH])
         return render_template('options.html', name="Migrated to Drafts")
 
+@app.route('/delete/<value>/<filename>')
+def delete_post(value, filename):
+    value, filename = value.strip(), filename.strip()
+    if str(value) == "drafts":
+        subprocess.run(["rm", DIRECTORIES.DRAFTS_PATH + "/" + filename])
+    else:
+        subprocess.run(["rm", DIRECTORIES.POSTS_PATH + "/" + filename])
+
+    return render_template('options.html', name="Post Deleted")
+
+def strip_first_line(data):
+    idx = data.index('\n')
+    firstline = (data[:idx]).strip()
+    data = firstline + data[idx:]
+    return data
+
 @app.route('/show/<value>/<filename>')
 def view_post(value, filename):
     data = None
@@ -47,6 +63,8 @@ def view_post(value, filename):
     elif str(value) == "journal":
         with open(DIRECTORIES.POSTS_PATH + filename) as f:
             data = f.read()
+
+    data = strip_first_line(data)
     return render_template('viewpost.html',
                     data="{}".format(data),
                     value=value,
@@ -65,6 +83,8 @@ def edit_post(value, filename):
         elif str(value) == "journal":
             with open(DIRECTORIES.POSTS_PATH + filename) as f:
                 data = f.read()
+
+        data = strip_first_line(data)
         return render_template('editpost.html', data=data, value=value)
     else:
         values = request.form
