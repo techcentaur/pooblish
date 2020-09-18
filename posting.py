@@ -3,6 +3,7 @@ import DIRECTORIES
 from datetime import datetime
 from flask import Flask, request, render_template
 from titlecase import titlecase
+import subprocess
 
 app = Flask(__name__)
 
@@ -23,6 +24,16 @@ def show(value):
         files = os.listdir(DIRECTORIES.POSTS_PATH)
         data = [x[3] for x in sorted([tuple(file[:10].split("-") + [file]) for file in files])]
     return render_template('show.html', data=data, value=value)
+
+@app.route('/migration/<value>/<filename>')
+def migration(value, filename):
+    value=value.strip()
+    if str(value) == "drafts":
+        subprocess.run(["mv", DIRECTORIES.DRAFTS_PATH + "/" + filename , DIRECTORIES.POSTS_PATH])
+        return render_template('options.html', name="Migrated to Published Posts")
+    else:
+        subprocess.run(["mv", DIRECTORIES.POSTS_PATH + "/" + filename , DIRECTORIES.DRAFTS_PATH])
+        return render_template('options.html', name="Migrated to Drafts")
 
 @app.route('/show/<value>/<filename>')
 def view_post(value, filename):

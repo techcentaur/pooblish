@@ -12,6 +12,12 @@
 	<h2>Post type: {{ value }}</h2>
 	<div>
 		<a href="/edit/{{ value }}/{{ filename }}">Edit this post</a>
+		<br>
+		{% if value == "drafts" %}
+			<a href="/migration/{{ value }}/{{ filename }}">Migrate Draft to Published Post</a>
+		{% else %}
+			<a href="/migration/{{ value }}/{{ filename }}">Migrate Post to Drafts</a>
+		{% endif %}
 	</div>
 	<div style="white-space:pre-wrap;">
 		<p>
