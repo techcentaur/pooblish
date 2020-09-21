@@ -2,5 +2,14 @@
 DIRECTORIES paths as constants
 """
 
-DRAFTS_PATH = "/home/solanki/github/blog/techcentaur.github.io/_drafts/"
-POSTS_PATH = "/home/solanki/github/blog/techcentaur.github.io/_posts/"
+# MAIn Directory
+BLOG_DIRECTORY = "/home/solanki/github/blog/techcentaur.github.io/"
+
+## DRAFTS and POSTS Paths
+DRAFTS_PATH = BLOG_DIRECTORY + "/_drafts/"
+POSTS_PATH = BLOG_DIRECTORY + "/_posts/"
+
+
+### INTRODUCTORY PAGES: MESS WITH CAUTION
+STATIC_PAGES = BLOG_DIRECTORY + "/_pages/"
+INDEX_PAGE = BLOG_DIRECTORY + "/index.md"

@@ -2,28 +2,31 @@
 <html>
 <head>
 	<title>Pooblish</title>
-	<style>
-		html{
-			font-family: 'Product Sans';
-		}
-	</style>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
-	<h2>Managing Posts for <a href="http://127.0.0.1:4000/">Blog</a></h2>
-	<ul>
+	<h2>Pooblish: <span style="font-weight: 100;">Easify maintainence of your Jekyll based blog</span></h2>
 		<hr>
-		<li>Checkout or Edit:</li>
-		<ul>
-			<li><a href="/show/drafts">Drafts</a></li>
-			<li><a href="/show/blog">Blog posts</a></li>
-			<li><a href="/show/journal">Journal posts</a></li>
-		</ul>
-		<hr>
-		<li><a href="/create">Create New Post</a></li>
+		<ol>
+			<li>
+				<span>Checkout or Edit Posts:</span>
+				<ul>
+					<li><a href="/show/drafts">Drafts</a></li>
+					<li><a href="/show/blog">Blog posts</a></li>
+					<li><a href="/show/journal">Journal posts</a></li>
+				</ul>
+				<hr>
+			<li>
+				<a href="/create">Create New Post</a>
+			</li>
+			<li>
+				<a href="/show/staticpages">Edit Static Pages</a>
+			</li>
+		</ol>
 	</ul>
 </body>
 <hr>
 <footer>
-	Designed by: Solanki
+	Designed by: <a href="https://github.com/techcentaur"></a>Solanki
 </footer>
 </html>

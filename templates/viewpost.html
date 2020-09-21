@@ -13,12 +13,13 @@
 	<div>
 		<ul>
 			<li><a href="/edit/{{ value }}/{{ filename }}">Edit this post</a></li>
-			{% if value == "drafts" %}
+			{% if value == "drafts" and value != "staticpages" %}
 				<li><a href="/migration/{{ value }}/{{ filename }}">Migrate draft to published post</a></li>
-			{% else %}
+			{% elif value != "staticpages" %}
 				<li><a href="/migration/{{ value }}/{{ filename }}">Migrate post to drafts</a></li>
+			{% elif value != "staticpages" %}
+				<li><a href="/delete/{{ value }}/{{ filename }}">Delete this post</a></li>
 			{% endif %}
-			<li><a href="/delete/{{ value }}/{{ filename }}">Delete this post</a></li>
 		</ul>
 	</div>
 	<div style="white-space:pre-wrap;">
